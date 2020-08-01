@@ -8,7 +8,6 @@ pub fn base64Encode(s: &str) -> String {
 
 #[wasm_bindgen]
 pub fn base64Decode(s: &str) -> String {
-    // String::from_utf8(decode(s).unwrap()).unwrap()
     String::from_utf8(decode(s).unwrap()).unwrap()
 }
 
@@ -17,11 +16,6 @@ fn test() {
     let s = "jesse";
     let a = "amVzc2U=";
 
-    // dbg!(base64Encode(s));
-    // dbg!(base64Decode(a));
-
-    let encode = base64Encode(s);
-    dbg!(&encode);
-    let decode = base64Decode(encode.as_str());
-    dbg!(decode);
+    assert_eq!(a,base64Encode(s));
+    assert_eq!(s,base64Decode(a));
 }
